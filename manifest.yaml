@@ -1,19 +1,19 @@
 models:
-test_model:
-model_file: scripts/test_model/test_model_notebook.ipynb
-container: ml-platform-notebook-gpu-builder
-test_model_2:
-model_file: scripts/test_model/test_model_python.py
-container: ml-platform-notebook-gpu-builder
-test_model_3:
-container: ml-platform-notebook-builder
-entrypoints:
-train:
-command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
-args: ["train"]
-predict:
-command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
-args: ["predict"]
-batch_predict:
-command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
-args: ["batch"]
+    test_model:
+        model_file: scripts/test_model/test_model_notebook.ipynb
+        container: ml-platform-notebook-gpu-builder
+    test_model_2:
+        model_file: scripts/test_model/test_model_python.py
+        container: ml-platform-notebook-gpu-builder
+    test_model_3:
+        container: ml-platform-notebook-builder
+        entrypoints:
+            train:
+                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                args: ["train"]
+            predict:
+                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                args: ["predict"]
+            batch_predict:
+                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                args: ["batch"]
