@@ -1,19 +1,29 @@
+name: examplemodel
+description: example model repo
+repository: git@github.com:narek/example_model.git:examplemodel
+image_type: tool
+team_email: ds-platform@lyft.com
+slack: "#ml-platform-bots"
+builder:
+    name: s2i
+    params:
+        builder: lyft/mlplatformnotebookbuilder:c229d8af98be5f0d55a8c4be84344aa8f8cf4e06
 models:
     test_model:
-        model_file: scripts/test_model/test_model_notebook.ipynb
+        model_file: test_models/test_model_notebook.ipynb
         container: ml-platform-notebook-gpu-builder
     test_model_2:
-        model_file: scripts/test_model/test_model_python.py
+        model_file: test_models/test_model_python.py
         container: ml-platform-notebook-gpu-builder
     test_model_3:
         container: ml-platform-notebook-builder
         entrypoints:
             train:
-                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                command: ["/usr/bin/dumb-init", "test_models/test_model_3.py"]
                 args: ["train"]
             predict:
-                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                command: ["/usr/bin/dumb-init", "test_models/test_model_3.py"]
                 args: ["predict"]
             batch_predict:
-                command: ["/usr/bin/dumb-init", "scripts/test_model/test_model_3.py"]
+                command: ["/usr/bin/dumb-init", "test_models/test_model_3.py"]
                 args: ["batch"]
